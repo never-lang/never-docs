@@ -379,7 +379,7 @@ neural network. Also supervised neural network learning algorithm is demonstrate
 I hope you liked the article and learnt something useful about neural networks,
 matrix algebra or Never programming language.
 
-[perceptron]: https://never-lang.github.io/never/perceptron.png "Perceptron"
+[perceptron]: perceptron.png "Perceptron"
 
 
 

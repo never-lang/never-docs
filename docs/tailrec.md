@@ -205,7 +205,7 @@ The idea to pass first-class functions can be extended. The above listing presen
 Examples presented in this article show how tail recursion can be used in practise. Both to calculate values of functions or used to execute code over elements of an array. Using tail
 recursive functions lets to increase program execution speed and reduce memory size.
 
-[uroboros]: https://never-lang.github.io/never/Serpiente_alquimica.jpg  "Uroboros"
-[never-lang]: https://never-lang.github.io/never
+[uroboros]: Serpiente_alquimica.jpg  "Uroboros"
+[never-lang]: https://github.com/never-lang/never
 
 

@@ -1504,8 +1504,8 @@ func main() -> int
 
 You can find more information about Never at the following pages:
 
-* [Tail Recursion](https://never-lang.github.io/never/tailrec.html)
-* [Neural Network in Never](https://never-lang.github.io/never/perceptron.html)
-* [3D Sin Function Animation](https://never-lang.github.io/never/wave.html)
-
+* [Tail Recursion](tailrec)
+* [Neural Network in Never](perceptron)
+* [3D Sin Function Animation](wave)
+* [raylib FFI](raylib)
 

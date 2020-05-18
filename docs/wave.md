@@ -182,8 +182,8 @@ I hope you liked this tutorial!
 * [POV-Ray][Povray]
 * [convert][convert]
 
-[wave]: https://never-lang.github.io/never/wave_small.gif  "Wave"
-[never-lang]: https://never-lang.github.io/never
+[wave]: wave_small.gif  "Wave"
+[never-lang]: https://github.com/never-lang/never "Never"
 [Povray]: http://www.povray.org/ "POV-Ray"
 [Convert]: https://imagemagick.org/script/convert.php
 

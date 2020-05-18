@@ -22,5 +22,6 @@ nav:
        - Wave: wave.md
        - Brain F***: brainf.md
        - FFI: ffi.md
+       - raylib FFI: raylib.md
    - Contact: contact.md
 

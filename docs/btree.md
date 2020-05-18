@@ -208,6 +208,6 @@ binary tree in order representation.
 This short article presents how basic binary tree can be implemented in Never
 programming language. Search operation is left unspecified as an exercise.
 
-[btree]: https://never-lang.github.io/never/btree.png  "Binary tree before delete"
-[btree_del]: https://never-lang.github.io/never/btree_del.png  "Binary tree after delete"
+[btree]: btree.png  "Binary tree before delete"
+[btree_del]: btree_del.png  "Binary tree after delete"
 
