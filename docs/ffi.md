@@ -5,12 +5,27 @@ title: FFI Demo
 # Foreign Function Interface - Code Snippet
 
 ```C
-/* data */
+#include "nev.h"
+#include "fficall.h"
+#include <stdio.h>
+#include <assert.h>
+
+void test_zero()
+{
+    assert(test_char('A') == 'B');
+    assert(test_char('B') == 'C');
+    assert(test_char('Z') == 'A');
+}
+
+void test_one()
+{
+    ffi_decl * fd = ffi_decl_new(20);
+    
+    ffi_decl_delete(fd);
+}
 
 int pos_x = 0;
 int pos_y = 0;
-
-/* externalized functions */
 
 int turn_left()
 {
@@ -43,17 +58,24 @@ int fire(int at_x, int at_y)
     return 0;
 }
 
-/* scripts */
-
 int program_one(program * prog)
 {
     const char * prog_str =
+        "var cnt = 0;"
+        " "
         "extern \"host\" func turn_left() -> int "
         "extern \"host\" func turn_right() -> int "
         "extern \"host\" func go_ahead(dist : int) -> int "
         "extern \"host\" func get_x() -> int "
         "extern \"host\" func get_y() -> int "
         "extern \"host\" func fire(at_x : int, at_y : int) -> int "
+        " "
+        "func on_click() -> int"
+        "{ "
+        "  cnt = cnt + 1; "
+        "  print(cnt); "
+        "  0 "
+        "} "
         " "
         "func on_key(dist : int) -> int "
         "{ "
@@ -64,73 +86,68 @@ int program_one(program * prog)
         "  "
         "   0 "
         "}";
-
-    return nev_compile_str_main(prog_str, "on_key", prog);
-}
-
-int program_two(program * prog)
-{
-    const char * prog_str =
-        "extern \"host\" func turn_left() -> int "
-        "extern \"host\" func turn_right() -> int "
-        "extern \"host\" func go_ahead(dist : int) -> int "
-        "extern \"host\" func get_x() -> int "
-        "extern \"host\" func get_y() -> int "
-        "extern \"host\" func fire(at_x : int, at_y : int) -> int "
-        " "
-        "func on_key(dist : int) -> int "
-        "{ "
-        "   turn_right(); "
-        "   go_ahead(dist); "
-        "  "
-        "   fire(get_x() + 20, get_y() + 30); "
-        "   fire(get_x() + 25, get_y() + 35); "
-        "  "
-        "   0 "
-        "}";
-
-    return nev_compile_str_main(prog_str, "on_key", prog);
+    
+    return nev_compile_str(prog_str, prog);
 }
 
 int execute_prog(program * prog, int param1)
 {
+    int i = 0;
     int ret = 0;
     object result = { 0 };
 
-    prog->params[0].int_value = param1;
+    vm * machine = vm_new(DEFAULT_VM_MEM_SIZE, DEFAULT_VM_STACK_SIZE);
 
-    ret =
-        nev_execute(prog, &result, DEFAULT_VM_MEM_SIZE, DEFAULT_VM_STACK_SIZE);
+    ret = nev_prepare(prog, "on_key");
     if (ret == 0)
     {
-        assert(result.type == OBJECT_INT && result.int_value == 0);
+        prog->params[0].int_value = param1;
+
+        ret = nev_execute(prog, machine, &result);
+        if (ret == 0)
+        {
+            assert(result.type == OBJECT_INT && result.int_value == 0);
+        }
     }
-        
+
+    for (i = 0; i < 10; i++)
+    {
+        ret = nev_prepare(prog, "on_click");
+        if (ret == 0)
+        {
+            ret = nev_execute(prog, machine, &result);
+            if (ret == 0)
+            {
+                assert(result.type == OBJECT_INT && result.int_value == 0);
+            }
+        }
+    }
+
+    vm_delete(machine);
+
     return 0;
 }
 
-/* demo */
-
-void test_one()
+void test_two()
 {
     program * prog_one = program_new();
-    program * prog_two = program_new();
 
     int ret1 = program_one(prog_one);
-    int ret2 = program_two(prog_two);
-    if (ret1 == 0 && ret2 == 0)
+    if (ret1 == 0)
     {
         execute_prog(prog_one, 60);
-        execute_prog(prog_two, 40);
     }
 
     program_delete(prog_one);
-    program_delete(prog_two);
 }
 
 int main(int argc, char * argv[])
 {
+    test_zero();
     test_one();
+    test_two();
+    
+    return 0;
 }
 ```
 
