@@ -1357,7 +1357,7 @@ func main() -> int
 
 ```
 
-Never modules are searched in the ```bash NEVER_PATH``` environment variable from the first to the last directory. First found module is used.
+Never modules are searched in the ```NEVER_PATH``` environment variable from the first to the last directory. First found module is used.
 
 ```bash
 export NEVER_PATH=.:/usr/local/share/never-lib:/home/smaludzi/never-lib
