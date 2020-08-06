@@ -1322,6 +1322,48 @@ by exception handler defined in function ```two```. Please also note that
 exception handlers can access function parameters. All bindings and nested
 functions are not accessible.
 
+## Modules
+
+Never programs can be separated into serveral modules. Cyclic module usage is supported, however, given module is included only once. Modules can include all Never declarations - bindings, functions, enums, record, enumerated records.
+
+```never
+module mone
+{
+    func one() -> int
+    {
+        1
+    }
+}
+```
+
+```never
+module mtwo
+{
+    func two() -> int
+    {
+        2
+    }
+}
+```
+
+```never
+use mone
+use mtwo
+
+func main() -> int
+{
+    mone.one() + mtwo.two()
+}
+
+```
+
+Never modules are searched in the ```bash NEVER_PATH``` environment variable from the first to the last directory. First found module is used.
+
+```bash
+export NEVER_PATH=.:/usr/local/share/never-lib:/home/smaludzi/never-lib
+```
+
+
 ## Console Output
 Never implements simple `print(int x) -> int` and `printf(float x) -> float` functions.
 The function writes an integer or float parameter `x` (with a new line character)

@@ -8,7 +8,7 @@ Category: functional
 
 export default function(hljs) {
   var NEVER_KEYWORDS = {
-    keyword: 'catch do enum else extern for func if in let match range record throw var while',
+    keyword: 'catch do enum else extern for func if in let match module range record throw use var while',
     type: 'bool char c_ptr float int string void',
     literal: 'false nil true c_null',
     built_in: 'assert assertb assertf chr cos exp length log ord pow print printb printc printf prints read sin sqrt str strf tan'
