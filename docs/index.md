@@ -1467,41 +1467,52 @@ Also nev can be executed with ```-e``` parameter followed by program.
 void test_one()
 {
     int ret = 0;
-    object result = { 0 };
     program * prog = program_new();
-    const char * prog_str = "func main(a : int, b : int) -> int { 10 * (a + b) }";
-
+    const char * prog_str = 
+        "func on_event(x : int, y : int) -> int { 10 * (x + y) }";
+        
     ret = nev_compile_str(prog_str, prog);
     if (ret == 0)
     {
-        prog->params[0].int_value = 2;
-        prog->params[1].int_value = 3;
+        object result = { 0 };
+        vm * machine = vm_new(DEFAULT_VM_MEM_SIZE, DEFAULT_VM_STACK_SIZE);
 
-        ret = nev_execute(prog, &result);
+        ret = nev_prepare(prog, "on_event");
         if (ret == 0)
         {
-            assert(result.type == OBJECT_INT && result.int_value == 50);
+            prog->params[0].int_value = 1;
+            prog->params[1].int_value = 2;
+
+            ret = nev_execute(prog, machine, &result);
+            if (ret == 0)
+            {
+                assert(result.type == OBJECT_INT && result.int_value == 30);
+            }
+
+            prog->params[0].int_value = 10;
+            prog->params[1].int_value = 20;
+
+            ret = nev_execute(prog, machine, &result);
+            if (ret == 0)
+            {
+                assert(result.type == OBJECT_INT && result.int_value == 300);
+            }
         }
 
-        prog->params[0].int_value = 9;
-        prog->params[1].int_value = 1;
-
-        ret = nev_execute(prog, &result);
-        if (ret == 0)
-        {
-            assert(result.type == OBJECT_INT && result.int_value == 100);
-        }
+        vm_delete(machine);
     }
-
+    
     program_delete(prog);
 }
 ```
 The above code present how Never can be embedded into C code. First ```nev.h```
 header is included. Then a new program ```prog``` is created and parsed with
-```parse_str``` function. In the next step, parameters are set to values. Please
-note that the program can be executed with different input parameters many times.
-Return value is set in ```result``` object which then can be used. In this
-example ```assert``` function assures that calculations are as expected.
+```nev_compile_str``` function. After program is compiled an entry function
+is chosen with ```nev_prepare``` function. Usually it is ```main``` function
+but in this example ```on_event``` is used. In the next step, parameters are
+set to values. Please note that the program can be executed with different input
+parameters many times. Return value is set in ```result``` object which then can be used.
+In this example ```assert``` function assures that calculations are as expected.
 
 ### Foreign Function Interface
 
