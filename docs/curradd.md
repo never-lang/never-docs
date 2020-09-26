@@ -1,8 +1,8 @@
 ---
-title: Tribute to Alonso C.
+title: Tribute to Alonzo C.
 ---
 
-# Tribute to Alonso C.
+# Tribute to Alonzo C.
 
 In mathematics functions are relations between two sets (denoted as f: X -> Y).
 Quite often functions take several arguments and give one result (for example
@@ -58,6 +58,6 @@ function which returns anonymous function which is invoked with second argument.
 # Summary
 
 I hope you liked this short introduction to currying. It is often used
-in lambda calculus discovered by Alonso Church.
+in lambda calculus discovered by Alonzo Church.
 
 

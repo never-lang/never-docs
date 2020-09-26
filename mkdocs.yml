@@ -15,6 +15,7 @@ nav:
        - Data Structures - Binary Tree: btree.md
        - Dynamic Programming - Rod Cutting : rodcut.md
        - Tribute to Alonso C.: curradd.md
+       - Filter Map Reduce: fmr.md
        - Fizz Buzz: fizzbuzz.md
        - Pythagorean Triangle: pitria.md
        - Tail Recursion: tailrec.md
