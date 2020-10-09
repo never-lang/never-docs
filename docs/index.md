@@ -140,6 +140,28 @@ In the above example function ```degrees``` takes conversion function which
 then is given passed parameter. In the next step function value is returned.
 Also its parameter ```conv``` is strongly typed with function type.
 
+Closures can be used to implement function composition.
+
+```never
+func compose(f(i : int) -> int, g(i : int) -> int) -> (int) -> int
+{
+    let func (i : int) -> int { f(g(i)) }
+}
+
+func dec(i : int) -> int { 10 * i }
+
+func succ(i : int) -> int { i + 1 }
+
+func main() -> int
+{
+    let h = compose(dec, succ);
+
+    print(h(1));
+
+    0
+}
+```
+
 ## Syntax Level
 Never supports any degree of function nesting. As result it is not needed to
 define all functions in programs top level.

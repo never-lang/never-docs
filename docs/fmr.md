@@ -72,7 +72,10 @@ func print_tab(t : tab) -> int
 }
 ```
 
-And now all functions combined to demonstrate how they work.
+And now all functions combined to demonstrate how they work. Quite interesting is
+last option to pass first argument of filter, map and reduce function using pipe
+operator. This way results from one function can be passed to another function and
+visually simplify function composition.
 
 ```never
 func main() -> int
@@ -98,6 +101,13 @@ func main() -> int
                  0,
                  let func(a : int, e : int) -> int { a + e })
          );
+
+    prints("---filter.map.reduce--2---\n");
+    print(  t |> filter(let func(e : int) -> bool { (e % 2) == 0 })
+              |> map(let func(e : int) -> int { 10 * e })
+              |> reduce(0, let func(a : int, e : int) -> int { a + e })
+         );
+
     0
 }
 ```
