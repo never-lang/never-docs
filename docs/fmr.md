@@ -2,6 +2,8 @@
 title: Filter Map Reduce
 ---
 
+# Filter Map Reduce
+
 This example shows how to create filter, map and reduce functions which
 operate on a record.
 
