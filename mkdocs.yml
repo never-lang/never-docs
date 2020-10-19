@@ -24,5 +24,6 @@ nav:
        - Brain F***: brainf.md
        - FFI: ffi.md
        - raylib FFI: raylib.md
+       - raylib cubes: raylib_cubes.md
    - Contact: contact.md
 
