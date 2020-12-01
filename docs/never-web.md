@@ -70,7 +70,7 @@ own code!
     "    func __tsum( sum : int, i : int, t[elems] : int ) -> int\n" +
     "    {\n" +
     "        i < elems ? __tsum( sum + t[i], i + 1, t ) : sum\n" +
-    "    }\n" +
+    "    };\n" +
     "    __tsum(0, 0, t)\n" +
     "}\n" +
     "\n" +
@@ -85,7 +85,7 @@ own code!
     "    func factrec(n : int, val : int) -> int\n" +
     "    {\n" +
     "        n == 0 ? val : factrec(n - 1, n * val)\n" +
-    "    }\n" +
+    "    };\n" +
     "\n" +
     "    factrec(n, 1)\n" +
     "}\n" +

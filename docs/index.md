@@ -176,7 +176,7 @@ func dir_deg(d : int) -> (float) -> float
     func cel2fah(c : float) -> float
     {
         c * 1.8 + 32
-    }
+    };
 
     d == 0 ? fah2cel : cel2fah
 }
@@ -203,7 +203,7 @@ func dir_deg(d : float, coeff : float) -> (float) -> float
     func cel2fah(c : float) -> float
     {
         coeff * (c * 1.8 + 32.0)
-    }
+    };
 
     d == 0 ? cel2fah : fah2cel
 }
@@ -496,7 +496,7 @@ func tmin( t[elems] : int ) -> int
     func __tmin( min : int, i : int, t[elems] : int ) -> int
     {
         i < elems ? __tmin( t[i] < min ? t[i] : min, i + 1, t ) : min
-    }
+    };
     __tmin(t[0], 0, t)
 }
 
@@ -520,7 +520,7 @@ func tforeach( t[elems] : int, each(e : int) -> int) -> int
     func __tforeach( val : int, i : int, t[elems] : int ) -> int
     {
         i < elems ? __tforeach( each(t[i]), i + 1, t ) : 0
-    }
+    };
     __tforeach(t[0], 0, t)
 }
 
@@ -538,7 +538,7 @@ func printTab( tab[dim] : int ) -> int
     func __printTab( val : int, i : int, tab[dim] : int ) -> int
     {
         i < dim ? __printTab( print(2 * tab[i]), i + 1, tab) : i
-    }
+    };
     __printTab(0, 0, tab)
 }
 
@@ -547,7 +547,7 @@ func print2Tab( tab[dim] : [D] : int ) -> int
     func __print2Tab( val : int, i : int, tab[dim] : [D] : int ) -> int
     {
         i < dim ? __print2Tab( printTab(tab[i]), i + 1, tab ) : i
-    }
+    };
     __print2Tab(0, 0, tab)
 }
 
@@ -570,7 +570,7 @@ func foreachTab( tab[dim] : int, each(e : int) -> int ) -> int
     func __foreachTab( val : int, i : int, tab[dim] : int ) -> int
     {
         i < dim ? __foreachTab( each(tab[i]), i + 1, tab) : i
-    }
+    };
     __foreachTab(0, 0, tab)
 }
 
@@ -579,7 +579,7 @@ func foreach2Tab( tab[dim] : [D] : int, eachTab(t[D] : int, (int) -> int) -> int
     func __foreach2Tab( val : int, i : int, tab[dim] : [D] : int ) -> int
     {
         i < dim ? __foreach2Tab( eachTab(tab[i], each), i + 1, tab ) : i
-    }
+    };
     __foreach2Tab(0, 0, tab)
 }
 
@@ -841,7 +841,7 @@ func cl() -> [_] : float
     func grad(d : float) -> float
     {
         d * 2.0 * 3.14159265 / 360.0
-    }
+    };
     
     [ f(y) | f in [ sin, cos ] : (float) -> float;
              y in [ grad(0.0), grad(30.0), grad(45.0), grad(60.0), grad(90.0) ] : float ] : float
@@ -856,7 +856,7 @@ func cl() -> [_] : (float) -> float
     func grad(d : float) -> float
     {
         d * 2.0 * 3.14159265 / 360.0
-    }
+    };
     
     [ g | f in [ sin, cos ] : (float) -> float;
           g in [ let func(x : float) -> float { f(grad(x)) } ] : (float) -> float ] : (float) -> float

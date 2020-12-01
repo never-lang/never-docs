@@ -73,7 +73,7 @@ func tprint( t[elems] : int ) -> int
 	func __tprint( val : int, i : int, t[elems] : int ) -> int
 	{
         i < elems - 1 ? __tprint( print(t[i]), i + 1, t ) : t[i]
-	}
+	};
 	
 	__tprint(t[0], 0, t)
 }
@@ -91,7 +91,7 @@ func tsum( t[elems] : int) -> int
 	func __tsum( sum : int, i : int, t[elems] : int ) -> int
 	{
 		i < elems ? __tsum( sum + t[i], i + 1, t ) : sum
-	}
+	};
 	__tsum(0, 0, t)
 }
 func main() -> int
@@ -107,7 +107,7 @@ func tmin( t[elems] : int ) -> int
 	func __tmin( min : int, i : int, t[elems] : int ) -> int
 	{
 		i < elems ? __tmin( t[i] < min ? t[i] : min, i + 1, t ) : min
-	}
+	};
     __tmin(t[0], 0, t)
 }
 func main() -> int
@@ -123,7 +123,7 @@ func exists( e : int, t[elems] : int ) -> int
 	func __exists( i : int, e : int, t[elems] : int ) -> int
 	{
 	    i < elems ? ( e == t[i] ? 1 : __exists( i + 1, e, t ) ) : 0
-	}
+	};
 	__exists( 0, e, t )
 }
 func main() -> int
@@ -144,7 +144,7 @@ func tforeach( t[elems] : int, each(e : int) -> int) -> int
 	func __tforeach( val : int, i : int, t[elems] : int ) -> int
 	{
         i < elems ? __tforeach( each(t[i]), i + 1, t ) : 0
-	}
+	};
 	__tforeach(t[0], 0, t)
 }
 func main() -> int
@@ -165,7 +165,7 @@ func tmapi( t[elems] : int, mapi(i : int, e : int) -> int) -> int
 	func __tmapi( val : int, i : int, t[elems] : int ) -> int
 	{
 	    i < elems ? __tmapi( mapi(i, t[i]), i + 1, t ) : 0
-	}
+	};
 	__tmapi(t[0], 0, t)
 }
 func main() -> int
@@ -190,7 +190,7 @@ func filter( t[elems] : int, if( int ) -> int, do( int ) -> int ) -> int
 	func __filter( val : int, i : int, t[elems] : int, if( e : int ) -> int, do( e : int ) -> int ) -> int
 	{
 		i < elems ? __filter( if(t[i]) ? do(t[i]) : 0,  i + 1, t, if, do ) : 0
-	}
+	};
 	__filter( 0, 0, t, if, do )
 }
 func main() -> int

@@ -64,10 +64,9 @@ to initialize neural network.
 func print_matrix(W[D1, D2] : float) -> int
 {
     let r = 0;
-    let c = 0;
-    
     for (r = 0; r < D1; r = r + 1)
     {
+        let c = 0;
         for (c = 0; c < D2; c = c + 1)
         {
             prints(W[r, c] + " ")
@@ -92,10 +91,9 @@ float and string parameter by changing float into its string representation.
 func one_matrix(W[D1, D2] : float) -> int
 {
     let r = 0;
-    let c = 0;
-    
     for (r = 0; r < D1; r = r + 1)
     {
+        let c = 0;
         for (c = 0; c < D2; c = c + 1)
         {
             W[r, c] = 1.0
@@ -112,10 +110,9 @@ subtraction.
 func rand_matrix(W[D1, D2] : float, rand() -> int) -> int
 {
     let r = 0;
-    let c = 0;
-    
     for (r = 0; r < D1; r = r + 1)
     {
+        let c = 0;
         for (c = 0; c < D2; c = c + 1)
         {
             W[r, c] = (rand() % 1000) / 1000.0
@@ -127,12 +124,12 @@ func rand_matrix(W[D1, D2] : float, rand() -> int) -> int
 ```never
 func sigmoid_matrix(W[D1, D2] : float) -> [_,_] : float
 {
-    let r = 0;
-    let c = 0;
     let S = {[ D1, D2 ]} : float;
     
+    let r = 0;
     for (r = 0; r < D1; r = r + 1)
     {
+        let c = 0;
         for (c = 0; c < D2; c = c + 1)
         {
             S[r, c] = sigmoid(W[r, c])
@@ -151,12 +148,12 @@ matrix elements.
 ```never
 func T_matrix(W[D1, D2] : float) -> [_,_] : float
 {
-    let r = 0;
-    let c = 0;
     let T = {[ D2, D1 ]} : float;
     
+    let r = 0;
     for (r = 0; r < D1; r = r + 1)
     {
+        let c = 0;
         for (c = 0; c < D2; c = c + 1)
         {
             T[c, r] = W[r, c]
@@ -173,12 +170,12 @@ in the returned matrix.
 ```never
 func Hadamard_matrix(W1[D1, D2] : float, W2[D3, D4] : float) -> [_,_] : float
 {
-    let r = 0;
-    let c = 0;
     let H = {[ D1, D2 ]} : float;
     
+    let r = 0;
     for (r = 0; r < D1; r = r + 1)
     {
+        let c = 0;
         for (c = 0; c < D2; c = c + 1)
         {
             H[r, c] = W1[r, c] * W2[r, c]
@@ -302,43 +299,43 @@ phases.
 ```never
 func nn() -> int
 {
-    let x = [ [0, 1, 0],
-              [1, 0, 0],
-              [1, 1, 1],
-              [0, 0, 1] ] : float;
-    let xT = T_matrix(x);
-    let y = [ [1, 0, 1, 0] ] : float;
-    let yT = T_matrix(y);
     let W = {[ 3, 1 ]} : float;
-    let z = {[ 4, 1 ]} : float;
-    let s = {[ 4, 1 ]} : float;
-    let sD = {[ 4, 1 ]} : float;
-    let err = {[ 4, 1 ]} : float;
     let one = {[ 4, 1 ]} : float;
     let rand = randomize(165);
-    let i = 0;
 
     one_matrix(one);
     rand_matrix(W, rand);
 
+    let z = {[ 4, 1 ]} : float;
+    let s = {[ 4, 1 ]} : float;
+
+    let i = 0;
     for (i = 0; i < 1000; i = i + 1)
     {
+        let x = [ [0.0f, 1.0f, 0.0f],
+                  [1.0f, 0.0f, 0.0f],
+                  [1.0f, 1.0f, 1.0f],
+                  [0.0f, 0.0f, 1.0f] ] : float;
+
         z = x * W;
         s = sigmoid_matrix(z);
 
-        err = yT - s;
-        sD = Hadamard_matrix(s, one - s);
-        W = W + xT * Hadamard_matrix(err, sD)
+        let y = [ [1.0f, 0.0f, 1.0f, 0.0f] ] : float;
+        let yT = T_matrix(y);
+        let err = yT - s;
+        let sD = Hadamard_matrix(s, one - s);
+
+        W = W + T_matrix(x) * Hadamard_matrix(err, sD)
     };
-    
-    z = ([[ 0, 1, 0 ]] : float) * W;
+
+    z = ([[ 0.0f, 1.0f, 0.0f ]] : float) * W;
     s = sigmoid_matrix(z);
     print_matrix(s);
 
-    z = ([[ 0, 1, 1 ]] : float) * W;
+    z = ([[ 0.0f, 1.0f, 0.0f ]] : float) * W;
     s = sigmoid_matrix(z);
     print_matrix(s);
-    
+
     0
 }
 ```
