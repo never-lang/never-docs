@@ -1368,7 +1368,7 @@ functions are not accessible.
 
 ## Modules
 
-Never programs can be separated into serveral modules. Cyclic module usage is supported, however, given module is included only once. Modules can include all Never declarations - bindings, functions, enums, record, enumerated records.
+Never programs can be separated into serveral modules. Modules can include all Never declarations - bindings, functions, enums, record, enumerated records.
 
 ```never
 module mone
