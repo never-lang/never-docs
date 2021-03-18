@@ -112,7 +112,7 @@ own code!
    var bin =
     "func main() -> int\n" +
     "{\n" +
-    "    let n = 32;\n" +
+    "    var n = 32;\n" +
     "\n" +
     "    do\n" +
     "    {\n" +
@@ -127,7 +127,7 @@ own code!
     "    a > b ? a : b\n" +
     "}\n" +
     "\n" +
-    "func cutrod(price[P] : int, memo[M] : int, len : int) -> int\n" +
+    "func cutrod(price[P] : int, var memo[M] : int, len : int) -> int\n" +
     "{\n" +
     "    var i = 0;\n" +
     "    var max_p = -1;\n" +
@@ -150,8 +150,8 @@ own code!
     "\n" +
     "func main() -> int\n" +
     "{\n" +
-    "    let price = [ 1, 5, 8, 9, 10, 17, 17, 20 ] : int;\n" +
-    "    let memo = [ 0, -1, -1, -1, -1, -1, -1, -1, -1 ] : int; \n" +
+    "    var price = [ 1, 5, 8, 9, 10, 17, 17, 20 ] : int;\n" +
+    "    var memo = [ 0, -1, -1, -1, -1, -1, -1, -1, -1 ] : int; \n" +
     "    \n" +
     "    cutrod(price, memo, 8)\n" +
     "}\n";

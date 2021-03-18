@@ -247,7 +247,7 @@ The idea of in-lining functions may be taken into extreme...
 ```never
 func calc() -> (float) -> float
 {
-    func fah2cel(f : float) -> float { (f - 32.0) / 1.8 }
+    let func fah2cel(f : float) -> float { (f - 32.0) / 1.8 }
 }
 
 func main() -> float
@@ -349,7 +349,7 @@ The following examples present assignments and flow control.
 ```never
 func main() -> int
 {
-    let n = 18;
+    var n = 18;
 
     do
     {
@@ -422,7 +422,7 @@ passed between functions. The following example declares an array and returns
 value of its element.
 
 ```never
-func f1(a -> int) -> [D, D] : int
+func f1(a : int) -> [D, D] : int
 {
      [ [ a, 0, 0, 0 ],
        [ 0, a, 0, 0 ],
@@ -560,7 +560,7 @@ func main() -> int
 
 The above code can be rewritten using ```foreach``` functions.
 ```never
-func twice(e -> int) -> int
+func twice(e : int) -> int
 {
     print(2 * e)
 }
@@ -960,7 +960,7 @@ enum ETWO { one, two, three, four, five }
 
 func g1() -> EONE
 {
-    EONE.four
+    EONE::four
 }
 
 func e1(a : EONE, b : EONE) -> string
@@ -977,7 +977,7 @@ func e1(a : EONE, b : EONE) -> string
 
 func main() -> int
 {
-    prints(e1(EONE.four, EONE.three));
+    prints(e1(EONE::four, EONE::three));
     
     0
 }
@@ -1285,7 +1285,7 @@ func rotate_matrix(alpha : float) -> [_,_] : float
 
 func main() -> int
 {
-    let vect = [[ 10.0, 0.0 ]] -> float;
+    let vect = [[ 10.0, 0.0 ]] : float;
 
     print_vect(vect * rotate_matrix(0.0));
     print_vect(vect * rotate_matrix(3.14159 / 4.0));
@@ -1326,7 +1326,7 @@ is used. Also any exception can be caught by parameterless exception handler.
 ```never
 func three(d : int, c : int) -> int
 {
-    let t = [ 1, 2, 3 ] : int;
+    var t = [ 1, 2, 3 ] : int;
 
     t[0] = d;
     170 / d
@@ -1449,8 +1449,8 @@ String can also be assigned and compared.
 ```never
 func main() -> int
 {
-    let s1 = "string one\n";
-    let s2 = "text two\n";
+    var s1 = "string one\n";
+    var s2 = "text two\n";
 
     prints(s1);
     prints(s2);
@@ -1469,7 +1469,9 @@ func main() -> int
     let s1 = "text equal";
     let s2 = "text equal";
 
-    assert(if (s1 == s2) { 1 } else { 0 } == 1)
+    assert((if (s1 == s2) { 1 } else { 0 }) == 1);
+    
+    0
 }
 ```
 

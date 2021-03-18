@@ -83,7 +83,7 @@ sections of lengths 1, 2, 3, ... can be sold for 1, 5, 8, ... is presented above
 ### Memoization
 
 ```never
-func cutrod(price[P] : int, memo[M] : int, len : int) -> int
+func cutrod(price[P] : int, var memo[M] : int, len : int) -> int
 {
     var i = 0;
     var max_p = -1;
@@ -109,7 +109,7 @@ func cutrod(price[P] : int, memo[M] : int, len : int) -> int
 func main() -> int
 {
     let price = [ 1, 5, 8, 9, 10, 17, 17, 20 ] : int;
-    let memo = [ 0, -1, -1, -1, -1, -1, -1, -1, -1 ] : int; 
+    var memo = [ 0, -1, -1, -1, -1, -1, -1, -1, -1 ] : int; 
     
     cutrod(price, memo, 8)
 }
