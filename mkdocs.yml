@@ -13,6 +13,7 @@ nav:
        - Never on the Web: never-web.md
        - Sorting - Quick Sort: qsort.md
        - Data Structures - Binary Tree: btree.md
+         Data Structures - Singly Linked List: list.md
        - Dynamic Programming - Rod Cutting : rodcut.md
        - Tribute to Alonzo C.: curradd.md
        - Filter Map Reduce: fmr.md
