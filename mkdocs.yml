@@ -1,5 +1,6 @@
 site_name: never-lang
 site_author: Sławomir Maludziński
+site_url: https://never-lang.readthedocs.io
 repo_url: https://github.com/never-lang/never
 repo_name: GitHub
 theme:
@@ -11,10 +12,11 @@ nav:
    - Documentation: index.md
    - Tutorials:
        - Never on the Web: never-web.md
-       - Sorting - Quick Sort: qsort.md
-       - Data Structures - Binary Tree: btree.md
-         Data Structures - Singly Linked List: list.md
-       - Dynamic Programming - Rod Cutting : rodcut.md
+       - Sorting Quick Sort: qsort.md
+       - Data Structures:
+           - Binary Tree: btree.md
+           - Singly Linked List: list.md
+       - Dynamic Programming Rod Cutting: rodcut.md
        - Tribute to Alonzo C.: curradd.md
        - Filter Map Reduce: fmr.md
        - Fizz Buzz: fizzbuzz.md
@@ -26,5 +28,5 @@ nav:
        - FFI: ffi.md
        - raylib FFI: raylib.md
        - raylib cubes: raylib_cubes.md
+       - Rail Road Diagram: railroad.md
    - Contact: contact.md
-
