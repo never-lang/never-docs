@@ -29,4 +29,5 @@ nav:
        - raylib FFI: raylib.md
        - raylib cubes: raylib_cubes.md
        - Rail Road Diagram: railroad.md
+       - Types: types.md
    - Contact: contact.md
