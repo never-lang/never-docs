@@ -2,7 +2,7 @@ Another example which demos Never and raylib FFI.
 
 Code mentioned below is adopted to from [raylib examples](https://www.raylib.com/examples.html).
 
-![raylib 3d camera][raylib 3d camera]
+![raylib 3d camera][raylib_3d_camera]
 
 ```never
 /**********************************************************************************************
@@ -129,4 +129,4 @@ func main() -> int
 }
 ```
 
-[raylib_cubes]: raylib_3d_camera.gif "raylib 3d camera"
+[raylib_3d_camera]: raylib_3d_camera.gif "raylib 3d camera"
